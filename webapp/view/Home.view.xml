@@ -87,6 +87,8 @@
                             <Input
                                 id="idHUInput"
                                 placeholder="Enter Warehouse Number..."
+                                value="1710"
+                                editable="false"
                             />
                             <Label
                                 id="idLabelUserID"

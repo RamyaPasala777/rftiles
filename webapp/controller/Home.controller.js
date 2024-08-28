@@ -1,8 +1,9 @@
 sap.ui.define([
-    "sap/ui/core/mvc/Controller",
-    "sap/m/MessageBox"
+    "./BaseController",
+    "sap/m/MessageBox",
+    "sap/m/MessageToast"
 ],
-    function (Controller, MessageBox) {
+    function (Controller, MessageBox,MessageToast) {
         "use strict";
 
         return Controller.extend("com.app.rfscreens.controller.Home", {
@@ -65,7 +66,7 @@ sap.ui.define([
             },
             /**Getting Signup form Details*/
             onSubmitPress: function () {
-                 
+
                 var oArea = this.byId("_IDGenComboBox1").getSelectedKey();
                 /**here OArea may be inbound,outbound or Internal based on OArea we get the values */
                 var oItem;
@@ -101,16 +102,70 @@ sap.ui.define([
 
                 var oModel = this.getView().getModel();
                 var that = this;
-                oModel.create("/RESOURCESSet", { Resourceid: oResource, Validity: false, Resourcename: oUsername, Area: oArea, Email: oEmail, Phonenumber: oPhone, Password: oPassword ,Resourcegroup:oItem}, {
+                oModel.create("/RESOURCESSet", { Resourceid: oResource, Validity: false, Resourcename: oUsername, Area: oArea, Email: oEmail, Phonenumber: oPhone, Password: oPassword, Resourcegroup: oItem }, {
                     success: function (oData) {
                         sap.m.MessageToast.show("suceess");
-                            that.onCloseRegisterSubmitDialog();
+                        that.onCloseRegisterSubmitDialog();
                     },
                     error: function (oError) {
                         MessageBox.error("Error");
                     }
                 })
 
-            }
+            },
+            onLoginPress: async function () {
+                debugger
+                var oView = this.getView();
+    
+                // Retrieve values from input fields
+                var sWarehouseNumber = oView.byId("idHUInput").getValue();
+                var sResourceId = oView.byId("idUserIDInput").getValue();
+                var sPassword = oView.byId("idPasswordInput").getValue();
+    
+                // Perform validation checks
+               
+                if (!sWarehouseNumber) {
+                    MessageToast.show("Please enter the Warehouse Number.");
+                    return;
+                }
+                if (!sResourceId) {
+                    MessageToast.show("Please enter the Resource ID.");
+                    return;
+                }
+                if (!sPassword) {
+                    MessageToast.show("Please enter the Password.");
+                    return;
+                }
+                if(!(sWarehouseNumber && sResourceId && sPassword)){
+                    MessageToast.show("Please enter all the details");
+                    return
+                }
+                // Get the model from the component
+                var oModel = this.getOwnerComponent().getModel();
+    
+                // Make the API call to check if the resource exists
+                try {
+                    await oModel.read("/RESOURCESSet('" + sResourceId + "')", {
+                        success: function (oData) {
+                            var Id = oData.Resourceid;
+                           this.getRouter().navTo("RouteResourcePage",{id:Id})
+                            // You can perform further actions here, like navigating to the next view
+                        }.bind(this),
+                        error: function () {
+                            MessageToast.show("User does not exist");
+                        }
+                    });
+                } catch (error) {
+                    MessageToast.show("An error occurred while checking the user.");
+                }
+            },
+    
+            onClearPress: function () {
+                var oView = this.getView();
+                oView.byId("idHUInput").setValue("");
+                oView.byId("idUserIDInput").setValue("");
+                oView.byId("idPasswordInput").setValue("");
+            },
+    
         });
     });
