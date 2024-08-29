@@ -12,16 +12,27 @@ sap.ui.define([
         return Controller.extend("com.app.rfscreens.controller.ResourcePage", {
             onInit: function () {
                 const oRouter = this.getOwnerComponent().getRouter();
-                oRouter.attachRoutePatternMatched(this.onResourceDetailsLoad, this);
-                var
-                    oModel = new JSONModel(); oModel.loadData(sap.ui.require.toUrl("com/app/rfscreens/model/data.json"));    // Set the model to the view only after loading the data
-                oModel.attachRequestCompleted(function () { this.getView().setModel(oModel); }.bind(this)); this.
-                    _setToggleButtonTooltip(!Device.system.desktop);
+               
+            
+                   // Initialize JSON Model
+                   var oModel = new JSONModel();
+                   this.getView().setModel(oModel);
+   
+                   // Load data asynchronously
+                   oModel.loadData(sap.ui.require.toUrl("com/app/rfscreens/model/data.json"));
+                   oModel.attachRequestCompleted(function (oEvent) {
+                       if (!oEvent.getParameter("success")) {
+                           MessageToast.show("Failed to load data.");
+                       }
+                   }.bind(this));
+
+                   oRouter.attachRoutePatternMatched(this.onResourceDetailsLoad, this);
             },
 
 
-            onResourceDetailsLoad: async function (oEvent) {
-                const { id } = oEvent.getParameter("arguments");
+            onResourceDetailsLoad: async function (oEvent1) {
+                
+                const { id } = oEvent1.getParameter("arguments");
                 this.ID = id;
                 console.log(this.ID)
                 var oModel = this.getView().getModel();
@@ -34,30 +45,33 @@ sap.ui.define([
                         var group = oData.Resourcegroup;
                         var resourceType = oData.Queue;
 
-
+                        
                         var aNavigationData = oModel.getProperty("/navigation");
-                        console.log(aNavigationData)
-                        // Define which process and item to show
-                        // var sProcessToShow = "Inbound Process";
-                        // var sItemToShow = "Unloading";
 
-                        // // Loop through navigation data
-                        // aNavigationData.forEach(function (oProcess) {
-                        //     // Loop through items of each process
-                        //     oProcess.items.forEach(function (oItem) {
-                        //         // Set visibility based on the matching process and item
-                        //         if (oProcess.title === sProcessToShow && oItem.title === sItemToShow) {
-                        //             oItem.visible = true;  // Set to true for matching item
-                        //         } else {
-                        //             oItem.visible = false; // Ensure all others are set to false
-                        //         }
-                        //     });
-                        // });
+                           // Define which process and item to show
+                        debugger
+                        var sProcessToShow =  area;
+                        var sItemToShow =   group;
+ 
+                        // Loop through navigation data
+                        aNavigationData.forEach(function (oProcess) {
+                            // Loop through items of each process
+                            oProcess.items.forEach(function (oItem) {
+                                // Set visibility based on the matching process and item
+                                if (oProcess.title === sProcessToShow && oItem.title === sItemToShow) {
+                                    oProcess.visible = true; 
+                                    oItem.visible = true;  // Set to true for matching item
+                                } else {
+                                    oItem.visible = false; // Ensure all others are set to false
+                                }
+                            });
+                        });
+                       
+                        // Update the model with modified visibility data
+                        oModel.setProperty("/navigation", aNavigationData);
+                        var aNavigationData = oModel.getProperty("/navigation");
 
-                        // // Update the model with modified visibility data
-                        // oModel.setProperty("/navigation", aNavigationData);
-
-
+                        
 
                         // You can perform further actions here, like navigating to the next view
                     }.bind(this),

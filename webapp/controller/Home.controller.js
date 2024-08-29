@@ -40,19 +40,19 @@ sap.ui.define([
             /**Based on Selected key DropDown Should be visible */
             onSelect: function (oEvent) {
                 var oArea = oEvent.getSource().getSelectedKey();
-                if (oArea === 'Inbound') {
+                if (oArea === 'Inbound Process') {
                     this.byId("_IDGenComboBox2").setVisible(true);
                     this.byId("_IDGenComboBox3").setVisible(false);
                     this.byId("_IDGenComboBox4").setVisible(false);
                     this.byId("_IDGenComboBox5").setVisible(false);
 
-                } else if (oArea === 'Outbound') {
+                } else if (oArea === 'Outbound Process') {
                     this.byId("_IDGenComboBox2").setVisible(false);
                     this.byId("_IDGenComboBox3").setVisible(true);
                     this.byId("_IDGenComboBox4").setVisible(false);
                     this.byId("_IDGenComboBox5").setVisible(false);
 
-                } else if (oArea === 'Internal') {
+                } else if (oArea === 'Internal Process') {
                     this.byId("_IDGenComboBox2").setVisible(false);
                     this.byId("_IDGenComboBox3").setVisible(false);
                     this.byId("_IDGenComboBox4").setVisible(true);
@@ -70,9 +70,9 @@ sap.ui.define([
                 var oArea = this.byId("_IDGenComboBox1").getSelectedKey();
                 /**here OArea may be inbound,outbound or Internal based on OArea we get the values */
                 var oItem;
-                if (oArea === 'Inbound') {
+                if (oArea === 'Inbound Process') {
                     oItem = this.byId("_IDGenComboBox2").getSelectedKey();
-                } else if (oArea === 'Outbound') {
+                } else if (oArea === 'Outbound Process') {
                     oItem = this.byId("_IDGenComboBox3").getSelectedKey();
                 } else {
                     oItem = this.byId("_IDGenComboBox4").getSelectedKey();

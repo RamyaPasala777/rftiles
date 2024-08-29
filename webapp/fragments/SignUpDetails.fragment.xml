@@ -80,20 +80,20 @@
                 >
                     <core:Item
                         id="_IDGenItemInbound"
-                        key="Inbound"
-                        text="Inbound"
+                        key="Inbound Process"
+                        text="Inbound Process"
                     />
 
                     <core:Item
                         id="_IDGenItemOutbound"
-                        key="Outbound"
-                        text="Outbound"
+                        key="Outbound Process"
+                        text="Outbound Process"
                     />
 
                     <core:Item
                         id="_IDGenItemInternal"
-                        key="Internal"
-                        text="Internal"
+                        key="Internal Process"
+                        text="Internal Process"
                     />
                 </ComboBox>
                 <Label
