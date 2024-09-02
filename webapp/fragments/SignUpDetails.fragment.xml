@@ -68,186 +68,75 @@
                 singleContainerFullSize="false"
             >
                 <Label
-                    id="idLableName"
-                    text="Area"
-                    required="true"
-                />
-
-                <ComboBox
-                    id="_IDGenComboBox1"
-                    placeholder="Select Area from Dropdown.."
-                    change="onSelect"
-                >
-                    <core:Item
-                        id="_IDGenItemInbound"
-                        key="Inbound Process"
-                        text="Inbound Process"
-                    />
-
-                    <core:Item
-                        id="_IDGenItemOutbound"
-                        key="Outbound Process"
-                        text="Outbound Process"
-                    />
-
-                    <core:Item
-                        id="_IDGenItemInternal"
-                        key="Internal Process"
-                        text="Internal Process"
-                    />
-                </ComboBox>
-                <Label
-                    id="idLableEmail"
-                    text="Group"
-                    required="true"
-                />
-                <ComboBox
-                    id="_IDGenComboBox5"
-                    placeholder="Select Group from Dropdown.."
-                    visible="true"
-                >
-                </ComboBox>
-                <ComboBox
-                    id="_IDGenComboBox2"
-                    placeholder="Select Group from Dropdown.."
-                    visible="false"
-                >
-                    <core:Item
-                        id="idunloading"
-                        key="Unloading"
-                        text="Unloading"
-                    />
-                    <core:Item
-                        id="idDeconsolidation"
-                        text="Deconsolidation"
-                        key="Deconsolidation"
-                    />
-                    <core:Item
-                        id="idPutaway"
-                        text="Putaway"
-                        key="Putaway"
-                    />
-                    <core:Item
-                        id="idReceivingOfHanndlingUnits"
-                        text="Receiving Of Hanndling Units"
-                        key="Receiving Of Hanndling Units"
-                    />
-                    <core:Item
-                        id="idSetReadyforwarehouseprocessing"
-                        text="Set Ready for warehouse processing"
-                        key="Set Ready for warehouse processing"
-                    />
-                </ComboBox>
-                <ComboBox
-                    id="_IDGenComboBox3"
-                    placeholder="Select Group from Dropdown.."
-                    visible="false"
-                >
-                    <!-- changes needed -->
-                    <core:Item
-                        id="idPicking"
-                        key="Picking"
-                        text="Picking"
-                    />
-                    <core:Item
-                        id="idPacking"
-                        text="Packing"
-                        key="Packing"
-                    />
-                    <core:Item
-                        id="idLoading"
-                        text="Loading"
-                        key="Loading"
-                    />
-                    <core:Item
-                        id="idPickPoint"
-                        text="Pick Point"
-                        key="Pick Point"
-                    />
-                    <core:Item
-                        id="idConsumption"
-                        text="Consumption"
-                        key="Consumption"
-                    />
-                    <core:Item
-                        id="idDistributionEquipment"
-                        key="Distribution Equipment"
-                        text="Distribution Equipment"
-                    />
-                </ComboBox>
-                <ComboBox
-                    id="_IDGenComboBox4"
-                    placeholder="Select Group from Dropdown.."
-                    visible="false"
-                >
-                    <core:Item
-                        id="idInventoryCounting"
-                        text="Inventory Counting"
-                        key="Inventory Counting"
-                    />
-                    <core:Item
-                        id="idAdhocWTcreations"
-                        text="Adhoc WT creations"
-                        key="Adhoc WT creations"
-                    />
-                    <core:Item
-                        id="idQueries"
-                        text="Queries"
-                        key="Queries"
-                    />
-                    <core:Item
-                        id="idQualityManagement"
-                        text="Quality Management"
-                        key="Quality Management"
-                    />
-                    <core:Item
-                        id="idResourceManagement"
-                        key="Resource Management"
-                        text="Resource Management"
-                    />
-                </ComboBox>
-
-                <Label
-                    id="idLablePhoneNumber"
+                    id="idLableResourceId"
                     text="Resource ID "
                     required="true"
                 />
                 <Input
-                    id="idPhoneNumberInput"
+                    id="idResourceIdInput"
                     value="{}"
                     placeholder="Enter Resource ID.."
                     required="true"
                 />
+                 <Label
+                    id="idLableResourceType"
+                    text="Resource Type "
+                    required="true"
+                />
+
+                 <ComboBox
+                    id="idResouceType"
+                    placeholder="Select Group from Dropdown.."
+                    
+                >
+                  <!-- <core:Item
+                       id="default"
+                        text=""
+                    /> -->
+                    <core:Item
+                        id="permanent"
+                        key="Permanent Employee"
+                        text="Permanent Employee"
+                    />
+                     <core:Item
+                        id="contract"
+                        key="Contract Employee"
+                        text="Contract Employee"
+                    />
+                   
+                </ComboBox>
+             
+                
 
                 <Label
-                    id="idLableCreatePassword"
+                    id="idLableUserName"
                     text="User Name"
                     required="true"
                 />
                 <Input
-                    id="idCreatePasswordInput"
+                    id="idUserNameInput"
                     value="{}"
                     placeholder="Enter your Name.."
                     required="true"
                 />
                 <Label
-                    id="idLableUserType"
+                    id="idLableEmail"
                     text="Email"
-                    required="true"
+                    required="false"
                 />
                 <Input
-                    id="idInputuserType"
+                    id="idInputEmail"
                     value="{}"
                     placeholder="Enter Email.."
                     editable="true"
-                    required="true"
+                    required="false"
                 />
                 <Label
-                    id="idLableUserType5"
+                    id="idLablePhoneNumber"
                     text="Phone Number"
                 />
                 <Input
-                    id="idInputuserType8"
+                    id="idInputPhoneNumber"
                     value="{}"
                     placeholder="Enter Phone Number.."
                     editable="true"

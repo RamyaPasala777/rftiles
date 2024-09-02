@@ -1,0 +1,1218 @@
+<mvc:View
+    controllerName="com.app.rfscreens.controller.Supervisor"
+    xmlns:html="http://www.w3.org/1999/xhtml" 
+    xmlns:mvc="sap.ui.core.mvc" 
+    xmlns="sap.m" 
+    xmlns:tnt="sap.tnt" 
+    xmlns:l="sap.ui.layout" 
+    xmlns:core="sap.ui.core" 
+    xmlns:f="sap.ui.layout.form" 
+    xmlns:suite="sap.suite.ui.commons" 
+    xmlns:viz="sap.viz.ui5.controls" 
+    xmlns:viz.feeds="sap.viz.ui5.controls.common.feeds" 
+    xmlns:viz.data="sap.viz.ui5.data" 
+    xmlns:smartTable="sap.ui.comp.smarttable" 
+>
+    <tnt:ToolPage id="toolPage">
+        <tnt:header>
+            <tnt:ToolHeader>
+                <Button
+                    id="sideNavigationToggleButton"
+                    icon="sap-icon://menu2"
+                    type="Transparent"
+                    press=".onSideNavButtonPress"
+                >
+                    <layoutData>
+                        <OverflowToolbarLayoutData priority="NeverOverflow" />
+                    </layoutData>
+                </Button>
+                <Label
+                    class="Heading"
+                    text="Yard Management"
+                />
+                <ToolbarSpacer id="_IDGenToolbarSpacer1" />
+                <ToolbarSpacer id="spacer">
+                    <layoutData>
+                        <OverflowToolbarLayoutData
+                            id="_IDGenOverflowToolbarLayoutData4"
+                            priority="Low"
+                            group="1"
+                        />
+                    </layoutData>
+                </ToolbarSpacer>
+                <Button
+                    icon="sap-icon://bell"
+                    press="onNotificationPress"
+                    type="Transparent"
+                >
+                    <customData>
+                        <BadgeCustomData
+                            id="idnotificationsbadge"
+                            visible="true"
+                        />
+                    </customData>
+                </Button>
+            </tnt:ToolHeader>
+        </tnt:header>
+        <tnt:sideContent>
+            <tnt:SideNavigation
+                expanded="true"
+                selectedKey="{/selectedKey}"
+                itemSelect=".onItemSelect"
+            >
+                <tnt:NavigationList
+                    items="{path: '/navigation'}"
+                    class="sidecontent"
+                >
+                    <tnt:NavigationListItem
+                        text="{title}"
+                        icon="{icon}"
+                        enabled="{enabled}"
+                        expanded="{expanded}"
+                        items="{items}"
+                        key="{key}"
+                        class="sidecontent"
+                    >
+                        <tnt:NavigationListItem
+                            text="{title}"
+                            key="{key}"
+                            enabled="{enabled}"
+                            class="sidecontent"
+                        />
+                    </tnt:NavigationListItem>
+                </tnt:NavigationList>
+                <tnt:fixedItem>
+                    <tnt:NavigationList
+                        items="{path: '/fixedNavigation'}"
+                        class="sidecontent"
+                    >
+                        <tnt:NavigationListItem
+                            text="{title}"
+                            icon="{icon}"
+                        />
+                    </tnt:NavigationList>
+                </tnt:fixedItem>
+            </tnt:SideNavigation>
+        </tnt:sideContent>
+        <tnt:mainContents>
+            <NavContainer
+                id="pageContainer"
+                initialPage="page1"
+            >
+                <pages>
+                    <ScrollContainer
+                        id="page1"
+                        horizontal="true"
+                        vertical="true"
+                        height="100%"
+                        class="sapUiContent"
+                    >
+                        <VBox
+                            id="idAssignslots"
+                            class="sapUiSmallMargin boxContainer"
+                        >
+                            <Title
+                                id="_IDHeadLabel"
+                                text="Admin page"
+                                class="sapUiSmallMarginTopHeading"
+                            />
+                            <FlexBox
+                                id="_IDField1"
+                                justifyContent="SpaceBetween"
+                                alignItems="Center"
+                                class="sapUiSmallMarginTop"
+                            >
+                                <Label
+                                    id="idempID"
+                                    text="Employee ID:"
+                                    labelFor="idEmppInput"
+                                    required="true"
+                                />
+                                <Input
+                                    id="idEmppInput"
+                                    placeholder="Enter Employee ID"
+                                    class="Inputs"
+                                />
+                            </FlexBox>
+                            <FlexBox
+                                id="_IDField4"
+                                justifyContent="SpaceBetween"
+                                alignItems="Center"
+                                class="sapUiSmallMarginTop"
+                            >
+                                <Label
+                                    id="idName"
+                                    text="Name:"
+                                    labelFor="idNameInput"
+                                    required="true"
+                                />
+                                <Input
+                                    id="idNameInput"
+                                    placeholder="Enter Name"
+                                    class="Inputs"
+                                />
+                            </FlexBox>
+                            <FlexBox
+                                id="_IDField3"
+                                justifyContent="SpaceBetween"
+                                alignItems="Center"
+                                class="sapUiSmallMarginTop"
+                            >
+                                <Label
+                                    id="idEmail"
+                                    text="Email:"
+                                    labelFor="idEmailInput"
+                                    required="true"
+                                />
+                                <Input
+                                    id="idEmailInput"
+                                    placeholder="Enter Email"
+                                    class="Inputs"
+                                />
+                            </FlexBox>
+                            <FlexBox
+                                id="_IDField36"
+                                justifyContent="SpaceBetween"
+                                alignItems="Center"
+                                class="sapUiSmallMarginTop"
+                            >
+                                <Label
+                                    id="idPhone"
+                                    text="Phone:"
+                                    labelFor="idPhoneInput"
+                                    required="true"
+                                />
+                                <Input
+                                    id="idPhoneInput"
+                                    placeholder="Enter Phone"
+                                    class="Inputs"
+                                />
+                            </FlexBox>
+                            <FlexBox
+                                id="_IDField2"
+                                justifyContent="SpaceBetween"
+                                alignItems="Center"
+                                class="sapUiSmallMarginTop"
+                            >
+                                <Label
+                                    id="idAreaLabel"
+                                    text="Area:"
+                                    labelFor="idAreaInput"
+                                    required="true"
+                                />
+                                <ComboBox
+                                    id="_IDGenComboBox1"
+                                    placeholder="Select Area from Dropdown.."
+                                    items="{/ProcessAreaSet}"
+                                    change="onSelect"
+                                >
+                                    <core:Item
+                                        id="_IDGenItemInbound"
+                                        key="{Processarea}"
+                                        text="{Processarea}"
+                                    />
+                                    <!-- <core:Item
+                                        id="_IDGenItemOutbound"
+                                        key="Outbound"
+                                        text="Outbound"
+                                    />
+                                    <core:Item
+                                        id="_IDGenItemInternal"
+                                        key="Internal"
+                                        text="Internal"
+                                    /> -->
+                                </ComboBox>
+                            </FlexBox>
+                            <FlexBox
+                                id="_IDField33"
+                                justifyContent="SpaceBetween"
+                                alignItems="Center"
+                                class="sapUiSmallMarginTop"
+                            >
+                                <Label
+                                    id="idGroup"
+                                    text="Group:"
+                                    labelFor="idGroupInput"
+                                    required="true"
+                                />
+                                <ComboBox
+                                    id="_IDGenComboBox5"
+                                    placeholder="Select Group from Dropdown.."
+                                    visible="true"
+                                    class="Inputs"
+                                />
+                                <ComboBox
+                                    id="_IDGenComboBox2"
+                                    placeholder="Select Group from Dropdown.."
+                                    visible="false"
+                                    class="Inputs"
+                                    change="onSelectQueue"
+                                >
+                                    <core:Item
+                                        id="idunloading"
+                                        key="Unloading"
+                                        text="Unloading"
+                                    />
+                                    <core:Item
+                                        id="idDeconsolidation"
+                                        text="Deconsolidation"
+                                        key="Deconsolidation"
+                                    />
+                                    <core:Item
+                                        id="idPutaway"
+                                        text="Putaway"
+                                        key="Putaway"
+                                    />
+                                    <core:Item
+                                        id="idReceivingOfHanndlingUnits"
+                                        text="Receiving Of Handling Units"
+                                        key="Receiving Of Handling Units"
+                                    />
+                                    <core:Item
+                                        id="idSetReadyforwarehouseprocessing"
+                                        text="Set Ready for warehouse processing"
+                                        key="Set Ready for warehouse processing"
+                                    />
+                                </ComboBox>
+                                <ComboBox
+                                    id="_IDGenComboBox3"
+                                    placeholder="Select Group from Dropdown.."
+                                    visible="false"
+                                   
+                                    change="onSelectQueue"
+                                >
+                                    <!--  changes needed  -->
+                                    <core:Item
+                                        id="idPicking"
+                                        key="Picking"
+                                        text="Picking"
+                                    />
+                                    <core:Item
+                                        id="idPacking"
+                                        text="Packing"
+                                        key="Packing"
+                                    />
+                                    <core:Item
+                                        id="idLoading"
+                                        text="Loading"
+                                        key="Loading"
+                                    />
+                                    <core:Item
+                                        id="idPickPoint"
+                                        text="Pick Point"
+                                        key="Pick Point"
+                                    />
+                                    <core:Item
+                                        id="idConsumption"
+                                        text="Consumption"
+                                        key="Consumption"
+                                    />
+                                    <core:Item
+                                        id="idDistributionEquipment"
+                                        key="Distribution Equipment"
+                                        text="Distribution Equipment"
+                                    />
+                                </ComboBox>
+                                <ComboBox
+                                    id="_IDGenComboBox4"
+                                    placeholder="Select Group from Dropdown.."
+                                    visible="false"
+                                    change="onSelectQueue"
+                                >
+                                    <core:Item
+                                        id="idInventoryCounting"
+                                        text="Inventory Counting"
+                                        key="Inventory Counting"
+                                    />
+                                    <core:Item
+                                        id="idAdhocWTcreations"
+                                        text="Adhoc WT creations"
+                                        key="Adhoc WT creations"
+                                    />
+                                    <core:Item
+                                        id="idQueries"
+                                        text="Queries"
+                                        key="Queries"
+                                    />
+                                    <core:Item
+                                        id="idQualityManagement"
+                                        text="Quality Management"
+                                        key="Quality Management"
+                                    />
+                                    <core:Item
+                                        id="idResourceManagement"
+                                        key="Resource Management"
+                                        text="Resource Management"
+                                    />
+                                </ComboBox>
+                            </FlexBox>
+                            <FlexBox
+                                id="_IDField34"
+                                justifyContent="SpaceBetween"
+                                alignItems="Center"
+                                class="sapUiSmallMarginTop"
+                            >
+                                <Label
+                                    id="idQueue"
+                                    text="Queue:"
+                                    labelFor="idQueueSelect"
+                                    required="true"
+                                />
+                                <ComboBox
+                                    id="_IDGenComboBox10"
+                                    placeholder="Select Queue from Dropdown.."
+                                    visible="true"
+                                    class="Inputs"
+                                />
+                                <ComboBox
+                                    id="_IDGenComboBox11"
+                                    placeholder="Select Queue from Dropdown.."
+                                    visible="false"
+                                    class="Inputs"
+                                >
+                                    <core:Item
+                                        id="idUnloadingbydelivery"
+                                        key="Unloading By Delivery"
+                                        text="Unloading By Delivery"
+                                    />
+                                    <core:Item
+                                        id="idUnloadingByShipment"
+                                        text="Unloading By Shipment"
+                                        key="Unloading By Shipment"
+                                    />
+                                    <core:Item
+                                        id="idUnloadingByTransportUnit"
+                                        text="Unloading By Transport Unit"
+                                        key="Unloading By Transport Unit"
+                                    />
+                                    <core:Item
+                                        id="idUnloadingByASN"
+                                        text="Unloading By ASN"
+                                        key="Unloading By ASN"
+                                    />
+                                    <core:Item
+                                        id="idUnloadingByDoor"
+                                        text="Unloading By Door"
+                                        key="Unloading By Door"
+                                    />
+                                    <core:Item
+                                        id="idUnloadingByBillOfLading"
+                                        text="Unloading By Bill Of Lading"
+                                        key="Unloading By Bill Of Lading"
+                                    />
+                                    <core:Item
+                                        id="idUnloadingByConsignmentOrder"
+                                        text="Unloading By Consignment Order"
+                                        key="Unloading By Consignment Order"
+                                    />
+                                </ComboBox>
+                                <ComboBox
+                                    id="_IDGenComboBox12"
+                                    placeholder="Select Queue from Dropdown.."
+                                    visible="false"
+                                    class="Inputs"
+                                >
+                                    <core:Item
+                                        id="idCreatePutawayHUSbyDeconsolidation"
+                                        key="Create Putaway HUS by Deconsolidation"
+                                        text="Create Putaway HUS by Deconsolidation"
+                                    />
+                                    <core:Item
+                                        id="idCreatePutawayHUSbyManually"
+                                        text="Create Putaway Hus Manually"
+                                        key="Create Putaway Hus Manually"
+                                    />
+                                    <core:Item
+                                        id="idDeconsolidationAutomatically"
+                                        text="Deconsolidation Automatically"
+                                        key="Deconsolidation Automatically"
+                                    />
+                                    <core:Item
+                                        id="idDeconsolidationManually"
+                                        text="Deconsolidation Manually"
+                                        key="Deconsolidation Manually"
+                                    />
+                                    <core:Item
+                                        id="idHUOverview"
+                                        text="HU Overview"
+                                        key="HU Overview"
+                                    />
+                                    <core:Item
+                                        id="idCreatePutawayHUManuallyWC"
+                                        text="Create Putaway HU Manually (W/O WC)"
+                                        key="Create Putaway HU Manually (W/O WC)"
+                                    />
+                                    <core:Item
+                                        id="idHUMaintenance"
+                                        text="HU Maintenance"
+                                        key="HU Maintenance"
+                                    />
+                                </ComboBox>
+                                <ComboBox
+                                    id="_IDGenComboBox13"
+                                    placeholder="Select Queue from Dropdown.."
+                                    visible="false"
+                                    class="Inputs"
+                                >
+                                    <core:Item
+                                        id="idPutawayByHU"
+                                        key="Putaway By HU"
+                                        text="Putaway By HU"
+                                    />
+                                    <core:Item
+                                        id="idPutawayByHUc"
+                                        key="Putaway By HU (Clustered)"
+                                        text="Putaway By HU (Clustered)"
+                                    />
+                                    <core:Item
+                                        id="idPutawayByWO"
+                                        key="Putaway By WO"
+                                        text="Putaway By WO"
+                                    />
+                                    <core:Item
+                                        id="idConfirmationCorrections"
+                                        key="Confirmation Corrections"
+                                        text="Confirmation Corrections"
+                                    />
+                                </ComboBox>
+                                <ComboBox
+                                    id="_IDGenComboBox14"
+                                    placeholder="Select Queue from Dropdown.."
+                                    visible="false"
+                                    class="Inputs"
+                                >
+                                    <core:Item
+                                        id="idReceivingOfHUbyDelivery"
+                                        key="Receiving Of HU by Delivery"
+                                        text="Receiving Of HU by Delivery"
+                                    />
+                                    <core:Item
+                                        id="idReceivingOfHUbyShipment"
+                                        key="Receiving Of HU by Shipment"
+                                        text="Receiving Of HU by Shipment"
+                                    />
+                                    <core:Item
+                                        id="idReceivingOfHUbyTU"
+                                        key="Receiving Of HU by TU"
+                                        text="Receiving Of HU by TU"
+                                    />
+                                    <core:Item
+                                        id="idReceivingOfHUbyASN"
+                                        key="Receiving Of HU by ASN"
+                                        text="Receiving Of HU by ASN"
+                                    />
+                                    <core:Item
+                                        id="idReceivingOfHUbyDoor"
+                                        key="Receiving Of HU by Door"
+                                        text="Receiving Of HU by Door"
+                                    />
+                                    <core:Item
+                                        id="idReceivingOfHUbyManufacturingOrder"
+                                        key="Receiving Of HU by Manufacturing Order"
+                                        text="Receiving Of HU by Manufacturing Order"
+                                    />
+                                    <core:Item
+                                        id="idReceivingOfTUDoor"
+                                        key="Receiving Of TU/Door (TW)"
+                                        text="Receiving Of TU/Door (TW)"
+                                    />
+                                    <core:Item
+                                        id="idUnloadHUC"
+                                        key="Unload HUC (TW)"
+                                        text="Unload HUC (TW)"
+                                    />
+                                    <core:Item
+                                        id="idRecevingofHUbyBillofLading"
+                                        key="Receving of HU by Bill of Lading"
+                                        text="Receving of HU by Bill of Lading"
+                                    />
+                                    <core:Item
+                                        id="idRecevingofHUbyConsignmentOrder"
+                                        key="Receving of HU by Consignment Order"
+                                        text="Receving of HU by Consignment Order"
+                                    />
+                                </ComboBox>
+                                <ComboBox
+                                    id="_IDGenComboBox15"
+                                    placeholder="Select Queue from Dropdown.."
+                                    visible="false"
+                                    class="Inputs"
+                                >
+                                    <core:Item
+                                        id="idSetReadyforWHProcessingbyBOL"
+                                        key="Set Ready for WH Processing by BOL"
+                                        text="Set Ready for WH Processing by BOL"
+                                    />
+                                    <core:Item
+                                        id="idSetReadyforWHProcessingbyCO"
+                                        key="Set Ready for WH Processing by CO"
+                                        text="Set Ready for WH Processing by CO"
+                                    />
+                                </ComboBox>
+                                <!--  OUTBOUND  -->
+                                <ComboBox
+                                    id="_IDGenComboBox16"
+                                    placeholder="Select Queue from Dropdown.."
+                                    visible="false"
+                                    class="Inputs"
+                                >
+                                    <core:Item
+                                        id="idPickingbySystemGuided"
+                                        key="Picking by System Guided"
+                                        text="Picking by System Guided"
+                                    />
+                                    <core:Item
+                                        id="idSystemGuidedByqueue"
+                                        key="System Guided By queue"
+                                        text="System Guided By queue"
+                                    />
+                                    <core:Item
+                                        id="idPickingByWR"
+                                        key="Picking By WR"
+                                        text="Picking By WR"
+                                    />
+                                    <core:Item
+                                        id="idPickingByWO"
+                                        key="Picking By WO"
+                                        text="Picking By WO"
+                                    />
+                                    <core:Item
+                                        id="idPickingByHU"
+                                        key="Picking By HU"
+                                        text="Picking By HU"
+                                    />
+                                </ComboBox>
+                                <ComboBox
+                                    id="_IDGenComboBox17"
+                                    placeholder="Select Queue from Dropdown.."
+                                    visible="false"
+                                    class="Inputs"
+                                >
+                                    <core:Item
+                                        id="idCreateShippingHU"
+                                        key="Create Shipping HU"
+                                        text="Create Shipping HU"
+                                    />
+                                    <core:Item
+                                        id="idAutomaticallyRepackHU"
+                                        key="Automatically Repack HU"
+                                        text="Automatically Repack HU"
+                                    />
+                                    <core:Item
+                                        id="idAutomaticallyRepackHUitem"
+                                        key="Automatically Repack HU item"
+                                        text="Automatically Repack HU item"
+                                    />
+                                    <core:Item
+                                        id="idCreateShippingHUWC"
+                                        key="Create Shipping HU (W/O WC)"
+                                        text="Create Shipping HU (W/O WC)"
+                                    />
+                                    <core:Item
+                                        id="idManuallyRepackHU"
+                                        key="Manually Repack HU"
+                                        text="Manually Repack HU"
+                                    />
+                                    <core:Item
+                                        id="idManuallyRepackHUitem"
+                                        key="Manually Repack HU Item"
+                                        text="Manually Repack HU Item"
+                                    />
+                                    <core:Item
+                                        id="idMaintainHU"
+                                        key="Maintain HU"
+                                        text="Maintain HU"
+                                    />
+                                    <core:Item
+                                        id="idManuallyRepackallHUItems"
+                                        key="Manually Repack all HU Items"
+                                        text="ManuallyRepack all HU Items"
+                                    />
+                                </ComboBox>
+                                <ComboBox
+                                    id="_IDGenComboBox18"
+                                    placeholder="Select Queue from Dropdown.."
+                                    visible="false"
+                                    class="Inputs"
+                                >
+                                    <core:Item
+                                        id="idLoadHUC"
+                                        key="Load HUC(TW)"
+                                        text="Load HUC(TW)"
+                                    />
+                                    <core:Item
+                                        id="idLoadingByDelivery"
+                                        key="Loading By Delivery"
+                                        text="Loading By Delivery"
+                                    />
+                                    <core:Item
+                                        id="idLoadingByShipment"
+                                        key="Loading By Shipment"
+                                        text="Loading By Shipment"
+                                    />
+                                    <core:Item
+                                        id="idLoadingByTransportUnit"
+                                        key="Loading By Transport Unit"
+                                        text="Loading By Transport Unit"
+                                    />
+                                    <core:Item
+                                        id="idLoadingByDoor"
+                                        key="Loading By Door"
+                                        text="Loading By Door"
+                                    />
+                                    <core:Item
+                                        id="idLoadingByHU"
+                                        key="Loading By HU"
+                                        text="Loading By HU"
+                                    />
+                                    <core:Item
+                                        id="idLoadingByRoute"
+                                        key="Loading By Route"
+                                        text="Loading By Route"
+                                    />
+                                    <core:Item
+                                        id="idBuildVehicle"
+                                        key="Build Vehicle"
+                                        text="Build Vehicle"
+                                    />
+                                    <core:Item
+                                        id="idLoadingByTUDoor"
+                                        key="Loading By TU/Door(TW)"
+                                        text="Loading By TUDoor(TW)"
+                                    />
+                                    <core:Item
+                                        id="idLoadingByBillofLading"
+                                        key="Loading By Bill of Lading"
+                                        text="Loading By Bill of Lading"
+                                    />
+                                    <core:Item
+                                        id="idLoadingByConsignmentOrder"
+                                        key="Loading By Consignment Order"
+                                        text="Loading By Consignment Order"
+                                    />
+                                </ComboBox>
+                                <ComboBox
+                                    id="_IDGenComboBox19"
+                                    placeholder="Select Queue from Dropdown.."
+                                    visible="false"
+                                    class="Inputs"
+                                >
+                                    <core:Item
+                                        id="idCreationOfSingleHU"
+                                        key="Creation Of Single HU"
+                                        text="Creation Of Single HU"
+                                    />
+                                    <core:Item
+                                        id="idPickingPoint"
+                                        key="Pick Point"
+                                        text="Pick Point"
+                                    />
+                                    <core:Item
+                                        id="idHuMaintenance"
+                                        key="HU Maintenance"
+                                        text="HU Maintenance"
+                                    />
+                                </ComboBox>
+                                <ComboBox
+                                    id="_IDGenComboBox20"
+                                    placeholder="Select Queue from Dropdown.."
+                                    visible="false"
+                                    class="Inputs"
+                                >
+                                    <core:Item
+                                        id="idConsumptionByManufacturingOrder"
+                                        key="Consumption By Manufacturing Order"
+                                        text="Consumption By Manufacturing Order"
+                                    />
+                                    <core:Item
+                                        id="idReversalofConsumptionByMOhu"
+                                        key="Reversal of Consumption By MO (HU)"
+                                        text="Reversal of Consumption By MO (HU)"
+                                    />
+                                    <core:Item
+                                        id="idReversalofConsumptionByMOBin"
+                                        key="Reversal of Consumption By MO (Bin)"
+                                        text="Reversal of Consumption By MO (Bin)"
+                                    />
+                                </ComboBox>
+                                <ComboBox
+                                    id="_IDGenComboBox21"
+                                    placeholder="Select Queue from Dropdown.."
+                                    visible="false"
+                                    class="Inputs"
+                                >
+                                    <core:Item
+                                        id="idLoadByHUAuto"
+                                        key="Load By HU-Auto.Pos.Assigment"
+                                        text="Load By HU-Auto.Pos.Assigment"
+                                    />
+                                    <core:Item
+                                        id="idLoadByHUMan"
+                                        key="Load By HU-Man.Pos.Assigment"
+                                        text="Load By HU-Man.Pos.Assigment"
+                                    />
+                                    <core:Item
+                                        id="idChangeloadingorUnloadingDetails"
+                                        key="Change loading/Unloading Details"
+                                        text="Change loading/Unloading Details"
+                                    />
+                                    <core:Item
+                                        id="idUnloadByHU"
+                                        key="Unload By HU"
+                                        text="Unload By HU"
+                                    />
+                                </ComboBox>
+                                <!--  Inventory  -->
+                                <ComboBox
+                                    id="_IDGenComboBox22"
+                                    placeholder="Select Queue from Dropdown.."
+                                    visible="false"
+                                    class="Inputs"
+                                >
+                                    <core:Item
+                                        id="idInventoryCountingGuided"
+                                        key="Inventory Counting Guided"
+                                        text="Inventory Counting Guided"
+                                    />
+                                    <core:Item
+                                        id="idInventoryCountingManual"
+                                        key="Inventory Counting Manual"
+                                        text="Inventory Counting Manual"
+                                    />
+                                    <core:Item
+                                        id="idAdhocInventoryCreation"
+                                        key="Adhoc Inventory Creation"
+                                        text="Adhoc Inventory Creation"
+                                    />
+                                    <core:Item
+                                        id="idAdhocInventoryCounting"
+                                        key="Adhoc Inventory Counting"
+                                        text="Adhoc Inventory Counting"
+                                    />
+                                </ComboBox>
+                                <ComboBox
+                                    id="_IDGenComboBox23"
+                                    placeholder="Select Queue from Dropdown.."
+                                    visible="false"
+                                    class="Inputs"
+                                >
+                                    <core:Item
+                                        id="idReplenishmentforFixedBins"
+                                        key="Replenishment for Fixed Bins"
+                                        text="Replenishment for Fixed Bins"
+                                    />
+                                    <core:Item
+                                        id="idCreateAdhocHUWt"
+                                        key="Create Adhoc HU Wt"
+                                        text="Create Adhoc HU Wt"
+                                    />
+                                    <core:Item
+                                        id="idCreateandconfirmAdhocHUWt"
+                                        key="Create and confirm Adhoc HU Wt"
+                                        text="Create and confirmAdhoc HU Wt"
+                                    />
+                                    <core:Item
+                                        id="idCreateAdhocProductWt"
+                                        key="Create Adhoc Product Wt"
+                                        text="Create Adhoc Product Wt"
+                                    />
+                                    <core:Item
+                                        id="idCreateAndConfirmAdhocProductWt"
+                                        key="Create And Confirm Adhoc Product Wt"
+                                        text="Create And Confirm Adhoc Product Wt"
+                                    />
+                                </ComboBox>
+                                <ComboBox
+                                    id="_IDGenComboBox24"
+                                    placeholder="Select Queue from Dropdown.."
+                                    visible="false"
+                                    class="Inputs"
+                                >
+                                    <core:Item
+                                        id="idHUQuery"
+                                        key="HU Query"
+                                        text="HU Query"
+                                    />
+                                    <core:Item
+                                        id="idStockorBinQuerybybin"
+                                        key="Stock/Bin Query by bin"
+                                        text="Stock/Bin Query by bin"
+                                    />
+                                    <core:Item
+                                        id="idStockorBinQuerybyProduct"
+                                        key="Stock/Bin Query by Product"
+                                        text="Stock/Bin Query by Product"
+                                    />
+                                    <core:Item
+                                        id="idSerialnumberLocation"
+                                        key="Serial number Location"
+                                        text="Serial number Location"
+                                    />
+                                    <core:Item
+                                        id="idAvailableHandlingUnitsOnbinquery"
+                                        key="Available Handling Units On bin query"
+                                        text="Available Handling Units On bin query"
+                                    />
+                                    <core:Item
+                                        id="idWTQuerybyWO"
+                                        key="WT Query by WO"
+                                        text="WT Query by WO"
+                                    />
+                                    <core:Item
+                                        id="idWTQuerybyWT"
+                                        key="WT Query by WT"
+                                        text="WT Query by WT"
+                                    />
+                                    <core:Item
+                                        id="idWTQuerybyQuery"
+                                        key="WT Query by Queue"
+                                        text="WT Query by Queue"
+                                    />
+                                    <core:Item
+                                        id="idWTQuerybyHU"
+                                        key="WT Query by HU"
+                                        text="WT Query by HU"
+                                    />
+                                    <core:Item
+                                        id="idHUStockOverviewQuery"
+                                        key="HU Stock Overview Query"
+                                        text="HU Stock Over view Query"
+                                    />
+                                </ComboBox>
+                                <ComboBox
+                                    id="_IDGenComboBox25"
+                                    placeholder="Select Queue from Dropdown.."
+                                    visible="false"
+                                    class="Inputs"
+                                >
+                                    <core:Item
+                                        id="idProductInspectionByHU"
+                                        key="Product Inspection By HU"
+                                        text="Product Inspection By HU"
+                                    />
+                                    <core:Item
+                                        id="idProductInspectionByStorageBin"
+                                        key="Product Inspection By StorageBin"
+                                        text="Product Inspection By StorageBin"
+                                    />
+                                </ComboBox>
+                                <ComboBox
+                                    id="_IDGenComboBox26"
+                                    placeholder="Select Queue from Dropdown.."
+                                    visible="false"
+                                    class="Inputs"
+                                >
+                                    <core:Item
+                                        id="idChangeQueue"
+                                        key="Change Queue"
+                                        text="Change Queue"
+                                    />
+                                    <core:Item
+                                        id="idChangeResourceGroup"
+                                        key="Change Resource Group"
+                                        text="Change Resource Group"
+                                    />
+                                </ComboBox>
+                            </FlexBox>
+                            <FlexBox
+                                id="_IDField6"
+                                justifyContent="Center"
+                                class="sapUiSmallMarginTop"
+                            >
+                                <Button
+                                    id="idButtonApprove"
+                                    text="Approve"
+                                    type="Unstyled"
+                                    press="onApprovePress"
+                                    class="SubmitBtnFromVendorPage"
+                                    width="auto"
+                                />
+                                <ToolbarSpacer
+                                    id="toolspacer"
+                                    width="10px"
+                                />
+                                <Button
+                                    id="idButtonReject"
+                                    text="Reject"
+                                    type="Reject"
+                                    press="onResetPress"
+                                    class="ClearBtnFromVendorPage"
+                                    width="auto"
+                                />
+                            </FlexBox>
+                            <Label id="idEmptyRow" />
+                        </VBox>
+                    </ScrollContainer>
+                    <ScrollContainer
+                        id="page2"
+                        horizontal="false"
+                        vertical="true"
+                        height="100%"
+                        class="sapUiContentPadding"
+                    >
+                        <Table
+                            id="idRequestedData"
+                            alternateRowColors="true"
+                            backgroundDesign="Transparent"
+                            items="{/RESOURCESSet}"
+                            mode="MultiSelect"
+                            class="Allslotsclasstable"
+                        >
+                            <headerToolbar>
+                                <OverflowToolbar id="idSlotsTableHeader1">
+                                    <Title
+                                        id="idTableHeaderTitle1"
+                                        text="Requested Data"
+                                        class="Titles"
+                                    />
+                                      <ToolbarSpacer
+                                        id="idUsersInfoToolbarSpacer"
+                                    />
+                                    <Button
+                                        id="idBtnCreate"
+                                        icon="sap-icon://add"
+                                        text="Add"
+                                        tooltip="Create New User"
+                                        type="Success"
+                                        press="onCreateUserBtnPress"
+                                    />
+                                </OverflowToolbar>
+                                
+                            </headerToolbar>
+                            <columns>
+                                <Column id="idEmployeeId">
+                                    <Title
+                                        id="idtitleEmpID"
+                                        text="Resource Id"
+                                    />
+                                </Column>
+                                <Column id="idEmployeename">
+                                    <Title
+                                        id="idtitleEmpName"
+                                        text="Resource Name"
+                                    />
+                                </Column>
+                                <Column id="idArea">
+                                    <Title
+                                        id="idAreatitle"
+                                        text="Area"
+                                    />
+                                </Column>
+                                <Column id="idResoursegroup">
+                                    <Title
+                                        id="idResoursegrouptitle"
+                                        text="Resourse group"
+                                    />
+                                </Column>
+                            </columns>
+                            <items>
+                                <ColumnListItem
+                                    id="idColumnListAllSlots"
+                                    class="Requested Data"
+                                >
+                                    <cells>
+                                        <Text
+                                            id="idresourceidValue"
+                                            text="{Resourceid}"
+                                        />
+                                        <Text
+                                            id="idResourcenameValue"
+                                            text="{Resourcename}"
+                                        />
+                                        <Text
+                                            id="idAreaValue"
+                                            text="{Area}"
+                                        />
+                                        <Text
+                                            id="idResourcegroupValue"
+                                            text="{Resourcegroup}"
+                                        />
+                                    </cells>
+                                </ColumnListItem>
+                            </items>
+                        </Table>
+                    </ScrollContainer>
+                    <ScrollContainer
+                        id="page3"
+                        horizontal="false"
+                        vertical="true"
+                        height="100%"
+                        class="sapUiContentPadding"
+                    >
+                        <Table
+                            id="idRequestDataTable"
+                            mode="MultiSelect"
+                            items="{/RESOURCESSet}"
+                            alternateRowColors="true"
+                            growingScrollToLoad="true"
+                        >
+                            <headerToolbar>
+                                <OverflowToolbar id="idUsersInfoHeade">
+                                    <Title
+                                        id="idUsersInfoTitl"
+                                        text="Users Data:"
+                                    />
+                                    <!-- <ToolbarSpacer
+                                        id="idUsersInfoToolbarSpace"
+                                    />
+                                    <SearchField
+                                        id="idonSearchBt"
+                                        width="20%"
+                                        liveChange="onSearch"
+                                    >
+                                        <layoutData>
+                                            <OverflowToolbarLayoutData
+                                                id="idToolbarLayoutDat"
+                                                priority="NeverOverflow"
+                                            />
+                                        </layoutData>
+                                    </SearchField>
+<Button
+                                        id="idBtnEd2"
+                                        tooltip="Approve"
+                                        text="Approve"
+                                        type="Accept"
+                                        press="onUpdateUserBtnPress"
+                                    />
+                                    <Button
+                                        id="idBtnEdi"
+                                        tooltip="Reject"
+                                        text="Reject"
+                                        type="Reject"
+                                        press="onUpdateUserBtnPress"
+                                    /> -->
+                                </OverflowToolbar>
+                            </headerToolbar>
+
+                            <columns>
+                                <Column
+                                    id="idRDEmpIdCol"
+                                    width="15%"
+                                >
+                                    <Title
+                                        id="idRDEmpIdTitle"
+                                        text="Resource Id"
+                                    />
+                                </Column>
+                                <Column
+                                    id="idRDEmpNameCol"
+                                    width="20%"
+                                >
+                                    <Title
+                                        id="idRDEmpNameTitle"
+                                        text="Resource Name"
+                                    />
+                                </Column>
+                                <Column
+                                    id="idRDAreaCol"
+                                    width="10%"
+                                >
+                                    <Title
+                                        id="idRDAreaColTitle"
+                                        text="Area"
+                                    />
+                                </Column>
+                                <Column
+                                    id="idRDGroupCol"
+                                    width="10%"
+                                >
+                                    <Title
+                                        id="idRDGroupTitle"
+                                        text="Group"
+                                    />
+                                </Column>
+                                <Column
+                                    id="idRDResourceTypeCol"
+                                    width="18%"
+                                >
+                                    <Title
+                                        id="idRDResourceTypeTitle"
+                                        text="Resource Type"
+                                    />
+                                </Column>
+                                <Column
+                                    id="idRDEmailCol"
+                                    width="10%"
+                                >
+                                    <Title
+                                        id="idRDEmailTitle"
+                                        text="Email"
+                                    />
+                                </Column>
+
+                                <Column
+                                    id="idRDPhoneNoCol"
+                                    width="15%"
+                                >
+                                    <Title
+                                        id="idRDPhoneNoTitle"
+                                        text="Phone Number"
+                                    />
+                                </Column>
+
+                                <Column
+                                    id="idPasswordCol1"
+                                    width="13%"
+                                >
+                                    <Title
+                                        id="idPasswordTitl1e"
+                                        text="Password"
+                                    />
+                                </Column>
+                            </columns>
+                            <items>
+                                <ColumnListItem id="idRDEmpIdColListItem">
+                                    <cells>
+                                        <Text
+                                            id="idRDEmpIdValue"
+                                            text="{Resourceid}"
+                                        />
+                                        <Text
+                                            id="idRDEmpNameColValue"
+                                            text="{Resourcename}"
+                                        />
+                                        <Text
+                                            id="idRDAreaColValue"
+                                            text="{Area}"
+                                        />
+                                        <Text
+                                            id="idRDGroupColValue"
+                                            text="{Resourcegroup}"
+                                        />
+                                        <Text
+                                            id="idRDResourceTypeColValue"
+                                            text="{Resourcetype}"
+                                        />
+                                        <Text
+                                            id="idRDEmailColValue"
+                                            text="{Email}"
+                                        />
+                                        <Text
+                                            id="idRDPhoneNoColValue"
+                                            text="{Phonenumber}"
+                                        />
+
+                                        <Text
+                                            id="idRDPasswordColValue"
+                                            text="{Password}"
+                                        />
+
+                                        <Text
+                                            id="idUserQueueColValue"
+                                            text="{Queue}"
+                                        />
+
+                                        <Text
+                                            id="idRDExpiredDateColValue"
+                                            text="{Expirydate}"
+                                        />
+                                    </cells>
+                                </ColumnListItem>
+                            </items>
+                        </Table>
+                    </ScrollContainer>
+                </pages>
+            </NavContainer>
+        </tnt:mainContents>
+    </tnt:ToolPage>
+</mvc:View>

@@ -119,8 +119,8 @@
         <tnt:mainContents>
             <NavContainer
                 id="pageContainer"
-                initialPage="page2"
-                   class="pages"
+                initialPage="false"
+                class="pages"
             >
                 <pages>
                     <ScrollContainer

@@ -106,6 +106,13 @@
           "target": [
             "TargetResourcePage"
           ]
+        },
+        {
+          "name": "Supervisor",
+          "pattern": "Supervisor",
+          "target": [
+            "TargetSupervisorPage"
+          ]
         }
       ],
       "targets": {
@@ -122,6 +129,13 @@
           "clearControlAggregation": false,
           "viewId": "ResourcePage",
           "viewName": "ResourcePage"
+        },
+        "TargetSupervisorPage": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "Supervisor",
+          "viewName": "Supervisor"
         }
       }
     },

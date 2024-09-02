@@ -145,9 +145,10 @@
                             press="onPressSignupBtn"
                             class="onSignupClassBtn"
                         />
-                        <Link
+                        <Button
                             id="idLinkPassword"
                             text="Forgot Password"
+                            press="onForgotPassword"
                             class="onForgotPassword"
                         />
                     </HBox>
