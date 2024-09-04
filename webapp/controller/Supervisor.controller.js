@@ -31,6 +31,14 @@ sap.ui.define(
 
             oToolPage.setSideExpanded(!oToolPage.getSideExpanded());
         },
+        onSideNavButtonPress1: function () {
+            var oToolPage = this.byId("toolPagee");
+            var bSideExpanded = oToolPage.getSideExpanded();
+
+            this._setToggleButtonTooltip(bSideExpanded);
+
+            oToolPage.setSideExpanded(!oToolPage.getSideExpanded());
+        },
 
         _setToggleButtonTooltip: function (bLarge) {
             var oToggleButton = this.byId('sideNavigationToggleButton');
@@ -1182,7 +1190,19 @@ sap.ui.define(
                     console.error("Error: ", oError);
                 }
             });
+        },
+        onAddTilesBtnPress:async function(){
+            this.oAddTiles ??= await this.loadFragment({
+                name: "com.app.rfscreens.fragments.AddTiles"
+            })
+            this.oAddTiles.open();
+            var oModel = new JSONModel(sap.ui.require.toUrl("com/app/rfscreens/model/datadt.json"));
+            this.getView().byId("toolPagee").setModel(oModel);
+        },
+        onAddTilesClose:async function(){
+            this.oAddTiles.close();
         }
+
         // onPressBackbtn:  function() {
         //     this.getView().byId("page1").setVisible(true);
         //     this.getView().byId("NewProcessAreaPage").setVisible(false);

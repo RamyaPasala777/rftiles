@@ -265,6 +265,10 @@
                                     />
                                 </MultiComboBox>
                             </FlexBox>
+                            <FlexBox >
+                            <Label id="idEmptyLabel" text=""></Label>
+                            <Button id="idaddtilesbutton" press="onAddTilesBtnPress" ></Button> 
+                            </FlexBox>
                             <FlexBox
                                 id="_IDField33"
                                 justifyContent="SpaceBetween"

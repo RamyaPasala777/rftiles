@@ -1,0 +1,116 @@
+
+
+{
+    "selectedKey": "dtpage2",
+    "navigation": [
+        {
+            "title": "Inbound Process",
+            "visible":true,
+            "icon": "sap-icon://inventory",
+            "expanded": true,
+            "key": "dtroot1",
+            "items": [
+                {
+                    "title": "Unloading",
+                    "key": "dtpage1",
+                    "visible":true
+                },
+                {
+                    "title": "Deconsolidation",
+                    "key": "dtpage2",
+                    "visible":true
+                },
+                {
+                    "title": "Putaway",
+                    "key": "dtpage3",
+                    "visible":true
+                },
+                {
+                    "title": "Receiving Of Hanndling Units",
+                    "key": "dtpage4",
+                    "visible":true
+                },
+                {
+                    "title": "Set Ready for warehouse processing",
+                    "key": "dtpage5",
+                    "visible":true
+                }
+            ]
+        },
+        {
+            "title": "Outbound Process",
+            "visible":true,
+            "icon": "sap-icon://shipping-status",
+            "expanded": true,
+            "items": [
+                {
+                    "title": "Picking",
+                    "key": "dtpage6",
+                    "visible":true
+                },
+                {
+                    "title": "Packing",
+                    "key": "dtpage7",
+                    "visible":true
+                },
+                {
+                    "title": "Loading",
+                    "key": "dtpage8",
+                    "visible":true
+                },
+                {
+                    "title": "Pick Point",
+                    "key": "dtpage9",
+                    "visible":true
+                },
+                {
+                    "title": "Consumption",
+                    "key": "dtpage10",
+                    "visible":true
+                },
+                {
+                    "title": "Distribution Equipment",
+                    "key": "dtpage11",
+                    "visible":true
+                }
+            ]
+        },
+        {
+            "title": "Internal Process",
+            "icon": "sap-icon://supplier",
+            "expanded": true,
+            "visible":true,
+            "items": [
+                {
+                    "title": "Inventory Counting",
+                    "key": "dtpage12",
+                    "visible":true
+                    
+                },
+                {
+                    "title": "Adhoc WT creations",
+                    "key": "dtpage13",
+                    "visible":true
+                },
+                {
+                    "title": "Queries",
+                    "key": "dtpage14",
+                    "visible":true
+                },
+                {
+                    "title": "Quality Management",
+                    "key": "dtpage15",
+                     "visible":true
+
+                },
+                {
+                    "title": "Resource Management",
+                    "key": "dtpage16",
+                    "visible":true
+                }
+            ]
+        }
+    ]
+}
+ 
+ 

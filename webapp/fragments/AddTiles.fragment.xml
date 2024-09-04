@@ -1,0 +1,964 @@
+<core:FragmentDefinition
+   
+    xmlns:core="sap.ui.core"
+     xmlns="sap.m"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:tnt="sap.tnt"
+    
+>
+    <Dialog
+        id="idAddTileDialog"
+        title="Add Tiles"
+        class="sapUiResponsivePadding"
+        stretch="false"
+    >
+        <customHeader>
+            <Bar id="idDialogHeader1">
+                <contentLeft>
+                    <Title
+                        id="idAddTiles"
+                        text="Add Tiles"
+                    />
+                </contentLeft>
+                <contentRight>
+                    <Button
+                        id="idAddTileCloseBtn"
+                        press="onAddTilesClose"
+                        type="Reject"
+                        tooltip="Close"
+                        icon="sap-icon://decline"
+                    />
+                </contentRight>
+            </Bar>
+        </customHeader>
+         <tnt:ToolPage
+        id="toolPagee"
+        class="pages"
+    >
+        <tnt:header>
+            <tnt:ToolHeader
+                id="idtntToolHeaderr"
+                class="pages"
+            >
+                <Button
+                    id="sideNavigationToggleButtonr"
+                    icon="sap-icon://menu2"
+                    type="Transparent"
+                    press=".onSideNavButtonPress1"
+                >
+                    <layoutData>
+                        <OverflowToolbarLayoutData
+                            id="idOverflowToolbarLayoutData6"
+                            priority="NeverOverflow"
+                        />
+                    </layoutData>
+                </Button>
+                <Image
+                    height="1.5rem"
+                    class="sapUiSmallMarginBegin"
+                    src="https://artihcus.com/assets/img/AG-logo.png"
+                />
+ 
+                <tnt:ToolHeaderUtilitySeparator
+                    id="idToolHeaderUtilitySeparator7"
+                />
+                <ToolbarSpacer id="idToolbarSpacer9">
+                    <layoutData>
+                        <OverflowToolbarLayoutData
+                            id="idOverflowToolbarLayoutData14"
+                            priority="NeverOverflow"
+                            minWidth="20px"
+                        />
+                    </layoutData>
+                 
+                </ToolbarSpacer>
+ 
+                 <Image
+                    height="1.5rem"
+                    class="sapUiSmallMarginBegin"
+                    src="https://artihcus.com/assets/img/AG-logo.png"
+                />
+ 
+                   <Avatar
+                       
+                        displaySize="XS"
+                        press="onAvatarPressed"
+                        tooltip="Profile"
+                    >
+                        <layoutData>
+                            <OverflowToolbarLayoutData
+                                priority="NeverOverflow"
+                            />
+                        </layoutData>
+                    </Avatar>
+            </tnt:ToolHeader>
+        </tnt:header>
+      
+        <tnt:sideContent>
+            <tnt:SideNavigation
+                id="idSideNavigation1"
+                expanded="true"
+                selectedKey="{/selectedKey}"
+                itemSelect=".onItemSelect"
+                    class="nav"
+            >
+                <tnt:NavigationList
+                    items="{path: '/navigation'}"
+                    id="idNavigationList1"
+                        class="nav"
+                >
+                    <tnt:NavigationListItem
+                        id="idNavigationListItem11"
+                        text="{title}"
+                        icon="{icon}"
+                        enabled="{enabled}"
+                        expanded="{expanded}"
+                        items="{items}"
+                        key="{key}"
+                        visible="{visible}"
+                    >
+                        <tnt:NavigationListItem
+                            id="idNavigationListItem111"
+                            text="{title}"
+                            class="nav"
+                            key="{key}"
+                            enabled="{enabled}"
+                            visible="{visible}"
+                        />
+                    </tnt:NavigationListItem>
+                </tnt:NavigationList>
+                <tnt:fixedItem>
+                    <tnt:NavigationList
+                        id="idNavigationList31"
+                        items="{path: '/fixedNavigation'}"
+                           class="nav"
+                    >
+                        <tnt:NavigationListItem
+                            id="idNavigationListItem31"
+                            text="{title}"
+                            icon="{icon}"
+                                class="nav"
+                        />
+                    </tnt:NavigationList>
+                </tnt:fixedItem>
+            </tnt:SideNavigation>
+        </tnt:sideContent>
+        <tnt:mainContents>
+            <NavContainer
+                id="pageContainer1"
+                initialPage="true"
+                class="pages"
+            >
+                <pages>
+                    <ScrollContainer
+                        id="dtpage1"
+                        horizontal="false"
+                        vertical="true"
+                        height="100%"
+                        class="sapUiContentPadding pages"
+                    >
+                        <GenericTile
+                            id="idUnloadingByDelivery1"
+                            header="Unloading By Delivery"
+                            press="onUnloadingByDelivery"
+                            class="sapUiTinyMargin tile"
+                             
+                        />
+ 
+                        <GenericTile
+                            id="idUnloadingByShipment1"
+                            header="Unloading By Shipment"
+                            press="onUnloadingByShipment"
+                            class="sapUiTinyMargin tile"
+                             
+                        />
+ 
+                        <GenericTile
+                            id="idUnloadingByTransportUnit1"
+                            header="Unloading By Transport Unit"
+                            press="onUnloadingByTransportUnit"
+                            class="sapUiTinyMargin tile"
+                             
+                        />
+ 
+                        <GenericTile
+                            id="idUnloadingByASN1"
+                            header="Unloading By ASN"
+                            press="onUnloadingByASN"
+                            class="sapUiTinyMargin tile"
+                             
+                        />
+ 
+                        <GenericTile
+                            id="idUnloadingByDoor1"
+                            header="Unloading By Door"
+                            press="onUnloadingByDoor"
+                            class="sapUiTinyMargin tile"
+                             
+                        />
+ 
+                        <GenericTile
+                            id="idUnloadingByBillOfLading1"
+                            header="Unloading By Bill of Lading"
+                            press="onUnloadingByBillofLading"
+                            class="sapUiTinyMargin tile"
+                             
+                        />
+ 
+                        <GenericTile
+                            id="idUnloadingByConsigmentOrder1"
+                            header="Unloading By Consigment Order"
+                            press="onUnloadingByConsigmentOrder"
+                            class="sapUiTinyMargin tile"
+                             
+                        />
+                    </ScrollContainer>
+                    <!-- <ScrollContainer
+                        id="page21"
+                        horizontal="false"
+                        vertical="true"
+                        height="100%"
+                        class="sapUiContentPadding pages"
+                         
+                    >
+                        <GenericTile
+                            id="idCreatePutawayHusforDeconsolidation1"
+                            header="Create Putaway Hus for Deconsolidation"
+                            press="onCreatePutawayHusforDeconsolidation"
+                            class="sapUiTinyMargin tile"
+                             
+                        />
+ 
+                        <GenericTile
+                            id="idCreatePutawayHusManually1"
+                            header="Create Putaway Hus Manually"
+                            press="onCreatePutawayHus Manually"
+                            class="sapUiTinyMargin tile"
+                             
+                        />
+ 
+                        <GenericTile
+                            id="idDeconsolidationAutomatically1"
+                            header="Deconsolidation Automatically"
+                            press="onDeconsolidationAutomatically"
+                            class="sapUiTinyMargin tile"
+                             
+                        />
+                        <GenericTile
+                            id="idDeconsolidateManually1"
+                            header="Deconsolidate Manually"
+                            press="onDeconsolidateManually"
+                            class="sapUiTinyMargin tile"
+                             
+                        />
+                        <GenericTile
+                            id="idHUOverview1"
+                            header="HU Overview"
+                            press="onHUOverview"
+                            class="sapUiTinyMargin tile"
+                             
+                        />
+ 
+                        <GenericTile
+                            id="idCreatePutawayHUManually1"
+                            header="Create Putaway HU Manually (W/O WC)"
+                            press="onCreatePutawayHUManually"
+                            class="sapUiTinyMargin tile"
+                             
+                        />
+ 
+                        <GenericTile
+                            id="idHUMaintenance1"
+                            header="HU Maintenance"
+                            press="ondHUMaintenance"
+                            class="sapUiTinyMargin tile"
+                             
+                        />
+                    </ScrollContainer> -->
+                    <!-- <ScrollContainer
+                        id="page31"
+                        horizontal="false"
+                        vertical="true"
+                        height="100%"
+                        class="sapUiContentPadding pages "
+                         
+                    >
+                        <GenericTile
+                            id="idPutawayByHU1"
+                            header="Putaway By HU"
+                            press="onPutawayByHU"
+                            class="sapUiTinyMargin tile"
+                             
+                        />
+                        <GenericTile
+                            id="idPutawayByHUClustered1"
+                            header="Putaway By HU (Clustered)"
+                            press="onPutawayByHUClustered"
+                            class="sapUiTinyMargin tile"
+                             
+                        />
+                        <GenericTile
+                            id="idPutawayByWO1"
+                            header="Putaway By WO"
+                            press="onPutawayByWO"
+                            class="sapUiTinyMargin tile"
+                             
+                        />
+                        <GenericTile
+                            id="idConfiramtionCorrections1"
+                            header="Confiramtion Corrections"
+                            press="onConfiramtionCorrections"
+                            class="sapUiTinyMargin tile"
+                             
+                        />
+                    </ScrollContainer> -->
+                    <!-- <ScrollContainer
+                        id="page41"
+                        horizontal="false"
+                        vertical="true"
+                        height="100%"
+                        class="sapUiContentPadding pages"
+                          
+                    >
+                         Recieving of Handling Units 
+                        <GenericTile
+                            id="idReceivingofHUbyDelivery1"
+                            header="Receiving of HU by Delivery"
+                            press="onReceivingofHUbyDelivery"
+                            class="sapUiTinyMargin tile"
+                             
+                        />
+                        <GenericTile
+                            id="idReceivingofHUbyShipment1"
+                            header="Receiving of HU by Shipment"
+                            press="onReceivingofHUbyShipment"
+                            class="sapUiTinyMargin tile"
+                             
+                        />
+                        <GenericTile
+                            id="idReceivingofHUbyTU1"
+                            header="Receiving of HU by TU"
+                            press="onReceivingofHUbyTU"
+                            class="sapUiTinyMargin tile"
+                             
+                        />
+                        <GenericTile
+                            id="idReceivingofHUbyASN1"
+                            header="Receiving of HU by ASN"
+                            press="onReceivingofHUbyASN"
+                            class="sapUiTinyMargin tile"
+                             
+                        />
+ 
+                        <GenericTile
+                            id="idReceivingofHUbyDoor1"
+                            header="Receiving of HU by Door"
+                            press="onReceivingofHUbyDoor"
+                            class="sapUiTinyMargin tile"
+                             
+                        />
+ 
+                        <GenericTile
+                            id="idReceivingofHUbyManufacturingOrder1"
+                            header="Receiving of HU by Manufacturing Order"
+                            press="onReceivingofHUbyManufacturingOrder"
+                            class="sapUiTinyMargin tile"
+                             
+                        />
+ 
+                        <GenericTile
+                            id="idReceivingofTUorDoor1"
+                            header="Receiving of TU/Door (TW)"
+                            press="onReceivingofTUorDoor"
+                            class="sapUiTinyMargin tile"
+                             
+                        />
+ 
+                        <GenericTile
+                            id="idUnloadHUCTW1"
+                            header="Unload HUC (TW)"
+                            press="onUnloadHUCTW"
+                            class="sapUiTinyMargin tile"
+                             
+                        />
+ 
+                        <GenericTile
+                            id="idReceivinogfHUbyBillofLading1"
+                            header="Receiving of HU by Bill of Lading"
+                            press="onReceivingofHUbyBillofLading"
+                            class="sapUiTinyMargin tile"
+                             
+                        />
+ 
+                        <GenericTile
+                            id="idReceivinogfHUbyConsignementOrder1"
+                            header="Receiving of HU by Consignement Order"
+                            press="onReceivingofHUbyConsignementOrder"
+                            class="sapUiTinyMargin tile"
+                             
+                        />
+                    </ScrollContainer> -->
+                    <!-- <ScrollContainer
+                        id="page51"
+                        horizontal="false"
+                        vertical="true"
+                        height="100%"
+                        class="sapUiContentPadding pages"
+                         
+                    >
+                         Set Ready for Warehouse Processing 
+ 
+                        <GenericTile
+                            id="idSetReadyForWHProcessingByBOL1"
+                            header="Set Ready For WH Processing By BOL"
+                            press="onSetReadyForWHProcessingByBOL"
+                            class="sapUiTinyMargin tile"
+                             
+                        />
+ 
+                        <GenericTile
+                            id="idSetReadyForWHProcessingByCO1"
+                            header="Set Ready For WH Processing By CO"
+                            press="onSetReadyForWHProcessingByCO"
+                            class="sapUiTinyMargin tile"
+                             
+                        />
+                    </ScrollContainer> -->
+                    <!-- <ScrollContainer
+                        id="page61"
+                        horizontal="false"
+                        vertical="true"
+                        height="100%"
+                        class="sapUiContentPadding pages"
+                         
+                    >
+                        <GenericTile
+                            id="_IDGenGenericTile111"
+                            class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout tile"
+                            header="Picking By system Guided"
+                            press="onPressPickingBySysGuided"
+                             
+                        />
+                        <GenericTile
+                            id="_IDGenGenericTile211"
+                            class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout tile"
+                            header="System Guided By queue"
+                            press="onPressSysguidedByQueue"
+                             
+                        />
+ 
+                        <GenericTile
+                            id="_IDGenGenericTile31"
+                            class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout tile"
+                            header="Picking By WR"
+                            press="onPressPickingByWR"
+                             
+                        />
+ 
+                        <GenericTile
+                            id="_IDGenGenericTile41"
+                            class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout tile"
+                            header="Picking By WO"
+                            press="onPressPickingByWO"
+                             
+                        />
+ 
+                        <GenericTile
+                            id="_IDGenGenericTile51"
+                            class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout tile"
+                            header="Picking By HU"
+                            press="onPressPickingByHU"
+                             
+                        />
+                    </ScrollContainer> -->
+ 
+                    <!-- <ScrollContainer
+                        id="page71"
+                        horizontal="false"
+                        vertical="true"
+                        height="100%"
+                        class="sapUiContentPadding pages"
+                         
+                    >
+                        <GenericTile
+                            id="_IDGenGenericTile61"
+                            class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout tile"
+                            header="Create Shipping HU"
+                            press="onPressCreateShippingHU"
+                             
+                        />
+ 
+                        <GenericTile
+                            id="_IDGenGenericTile71"
+                            class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout tile"
+                            header="Automatically Repack HU"
+                            press="onPressAutomaticallyRepeakHU"
+                             
+                        />
+ 
+                        <GenericTile
+                            id="_IDGenGenericTile81"
+                            class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout tile"
+                            header="Automatically Repack HU Item"
+                            press="onPressAutomaticallyRepeakHUItem"
+                             
+                        />
+ 
+                        <GenericTile
+                            id="_IDGenGenericTile91"
+                            class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout tile"
+                            header="Create Shipping HU (W/O WC)"
+                            press="onPress"
+                             
+                        />
+ 
+                        <GenericTile
+                            id="_IDGenGenericTile101"
+                            class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout tile"
+                            header="Manually Repack HU"
+                            press="press"
+                             
+                        />
+ 
+                        <GenericTile
+                            id="_IDGenGenericTile1111"
+                            class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout tile"
+                            header="Manually Repack HU Item"
+                            press="press"
+                             
+                        />
+ 
+                        <GenericTile
+                            id="_IDGenGenericTile121"
+                            class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout tile"
+                            header="Maintain HU"
+                            press="press"
+                             
+                        />
+ 
+                        <GenericTile
+                            id="_IDGenGenericTile131"
+                            class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout tile"
+                            header="Manually re-pack all HU items"
+                            press="press"
+                             
+                        />
+                    </ScrollContainer> -->
+                    <!-- <ScrollContainer
+                        id="page81"
+                        horizontal="false"
+                        vertical="true"
+                        height="100%"
+                        class="sapUiContentPadding pages"
+                         
+                    >
+                        <GenericTile
+                            id="_IDGenGenericTile141"
+                            class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout tile"
+                            header="Load HUC(TW)"
+                            press="press"
+                             
+                        />
+ 
+                        <GenericTile
+                            id="_IDGenGenericTile151"
+                            class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout tile"
+                            header="Loading By Delivery"
+                            press="press"
+                             
+                        />
+ 
+                        <GenericTile
+                            id="_IDGenGenericTile161"
+                            class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout tile"
+                            header="Loading By Shipment"
+                            press="press"
+                             
+                        />
+ 
+                        <GenericTile
+                            id="_IDGenGenericTile171"
+                            class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout tile"
+                            header="Loading By Transport Unit"
+                            press="press"
+                             
+                        />
+ 
+                        <GenericTile
+                            id="_IDGenGenericTile181"
+                            class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout tile"
+                            header="Loading By Door"
+                            press="press"
+                             
+                        />
+ 
+                        <GenericTile
+                            id="_IDGenGenericTile191"
+                            class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout tile"
+                            header="Loading By HU"
+                            press="press"
+                             
+                        />
+ 
+                        <GenericTile
+                            id="_IDGenGenericTile201"
+                            class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout tile"
+                            header="Loading By Route"
+                            press="press"
+                             
+                        />
+ 
+                        <GenericTile
+                            id="_IDGenGenericTile2111"
+                            class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout tile"
+                            header="Build Vehicle"
+                            press="press"
+                             
+                        />
+ 
+                        <GenericTile
+                            id="_IDGenGenericTile221"
+                            class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout tile"
+                            header="Loading By TU/Door (TW)"
+                            press="press"
+                             
+                        />
+ 
+                        <GenericTile
+                            id="_IDGenGenericTile231"
+                            class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout tile"
+                            header="Loading By bill of Lading"
+                            press="press"
+                             
+                        />
+ 
+                        <GenericTile
+                            id="_IDGenGenericTile241"
+                            class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout tile"
+                            header="Loading By Consignment order"
+                            press="press"
+                             
+                        />
+                    </ScrollContainer> -->
+                    <!-- <ScrollContainer
+                        id="page91"
+                        horizontal="false"
+                        vertical="true"
+                        height="100%"
+                        class="sapUiContentPadding pages"
+                         
+                    >
+                        <GenericTile
+                            id="_IDGenGenericTile251"
+                            class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout tile"
+                            header="Creation Of Single HU"
+                            press="press"
+                             
+                        />
+ 
+                        <GenericTile
+                            id="_IDGenGenericTile261"
+                            class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout tile"
+                            header="Pick Point"
+                            press="press"
+                             
+                        />
+ 
+                        <GenericTile
+                            id="_IDGenGenericTile271"
+                            class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout tile"
+                            header="HU Maintenance"
+                            press="press"
+                             
+                        />
+                    </ScrollContainer> -->
+                    <!-- <ScrollContainer
+                        id="page101"
+                        horizontal="false"
+                        vertical="true"
+                        height="100%"
+                        class="sapUiContentPadding pages"
+                         
+                    >
+                        <GenericTile
+                            id="_IDGenGenericTile281"
+                            class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout tile"
+                            header="Consumption By Manufacturing Order"
+                            press="press"
+                             
+                        />
+ 
+                        <GenericTile
+                            id="_IDGenGenericTile291"
+                            class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout tile"
+                            header="Reversal of Consumption by MO (HU)"
+                            press="press"
+                             
+                        />
+ 
+                        <GenericTile
+                            id="_IDGenGenericTile301"
+                            class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout tile"
+                            header="Reversal of consumption by MO (Bin)"
+                            press="press"
+                             
+                        />
+                    </ScrollContainer> -->
+                    <!-- <ScrollContainer
+                        id="page1111"
+                        horizontal="false"
+                        vertical="true"
+                        height="100%"
+                        class="sapUiContentPadding pages"
+                         
+                    >
+                        <GenericTile
+                            id="_IDGenGenericTile321"
+                            class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout tile"
+                            header="Load By HU - Man. Pos. Assigment"
+                            press="press"
+                             
+                        />
+ 
+                        <GenericTile
+                            id="_IDGenGenericTile331"
+                            class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout tile"
+                            header="Change Loading/Unloading Details"
+                            press="press"
+                             
+                        />
+ 
+                        <GenericTile
+                            id="_IDGenGenericTile341"
+                            class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout tile"
+                            header="Unload By HU"
+                            press="press"
+                             
+                        />
+                    </ScrollContainer> -->
+                    <!-- <ScrollContainer
+                        id="page121"
+                        horizontal="false"
+                        vertical="true"
+                        height="100%"
+                        class="sapUiContentPadding pages"
+                         
+                    >
+                        <GenericTile
+                            id="_IDInventoryCountingGuied1"
+                            class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout tile"
+                            header="Inventory Counting Guied"
+                            press="OnPressInventoryCountingGuied"
+                             
+                        />
+ 
+                        <GenericTile
+                            id="_IDInventoryCountingManual1"
+                            class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout tile"
+                            header="Inventory Counting Manual"
+                            press="OnPressInventoryCountingManual"
+                             
+                        />
+ 
+                        <GenericTile
+                            id="_IDAdhocInventoryCreation1"
+                            class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout tile"
+                            header="Adhoc Inventory Creation"
+                            press="OnPressAdhocInventoryCreation"
+                             
+
+                        />
+ 
+                        <GenericTile
+                            id="_IDAdhocInventoryCounting1"
+                            class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout tile"
+                            header="Adhoc Inventory Counting"
+                            press="OnPressAdhocInventoryCounting"
+                             
+                            
+                        />
+                    </ScrollContainer> -->
+                    <!-- <ScrollContainer
+                        id="page131"
+                        horizontal="false"
+                        vertical="true"
+                        height="100%"
+                        class="sapUiContentPadding pages"
+                         
+                    >
+                        <GenericTile
+                            id="_IDPressReplenishmentforfixedBins1"
+                            class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout tile"
+                            header="Replenishment for fixed Bins"
+                            press="OnPressReplenishmentforfixedBins"
+                             
+                        />
+ 
+                        <GenericTile
+                            id="_IDCreateAdhocHUWT1"
+                            class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout tile"
+                            header="Create Adhoc HU WT"
+                            press="OnPressCreateAdhocHUWT"
+                             
+                        />
+ 
+                        <GenericTile
+                            id="_IDCreateandConfirmAdhocHUWT1"
+                            class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout tile"
+                            header="Create and Confirm Adhoc HU WT"
+                            press="OnPressCreateandConfirmAdhocHUWT"
+                             
+                        />
+ 
+                        <GenericTile
+                            id="_IDCreateAdhocProductWT1"
+                            class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout tile"
+                            header="Create Adhoc Product WT"
+                            press="OnPressCreateAdhocProductWT"
+                             
+                        />
+ 
+                        <GenericTile
+                            id="_IDCreateandConfirmAdhocProductWT1"
+                            class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout tile"
+                            header="Create and Confirm Adhoc Product WT"
+                            press="OnPressCreateandConfirmAdhocProductWT"
+                             
+                        />
+                    </ScrollContainer> -->
+                    <!-- <ScrollContainer
+                        id="page141"
+                        horizontal="false"
+                        vertical="true"
+                        height="100%"
+                        class="sapUiContentPadding pages"
+                         
+                    >
+                        <GenericTile
+                            id="_IDHUQuery1"
+                            class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout tile"
+                            header="HU Query"
+                            press="OnPressHUQuery"
+                             
+                        />
+ 
+                        <GenericTile
+                            id="_IDStockBinQuerybyBin1"
+                            class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout tile"
+                            header="Stock/Bin Query by Bin"
+                            press="OnPressStock/BinQuerybyBin"
+                             
+                        />
+ 
+                        <GenericTile
+                            id="_IDStockBinQuerybyProduct1"
+                            class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout tile"
+                            header="Stock/Bin Query by Product"
+                            press="OnPressStock/BinQuerybyProduct"
+                             
+                        />
+ 
+                        <GenericTile
+                            id="_IDSerialnumberLocation1"
+                            class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout tile"
+                            header="Serial number Location"
+                            press="OnPressSerialnumberLocation"
+                             
+                        />
+                        <GenericTile
+                            id="_IDAvailableHandlingunitsonbinquery1"
+                            class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout tile"
+                            header="Available Handling units on bin query"
+                            press="OnPressAvailable Handling units on bin query"
+                             
+                        />
+                        <GenericTile
+                            id="_IDWTQuerybyWO1"
+                            class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout tile"
+                            header="WT Query by WO"
+                            press="OnPressWTQuerybyWO"
+                             
+                        />
+                        <GenericTile
+                            id="_IDWTQuerybyWT1"
+                            class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout tile"
+                            header="WT Query By WT"
+                            press="OnPressWTQuerybyWT"
+                             
+                        />
+                        <GenericTile
+                            id="_IDWTQuerybyQueue1"
+                            class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout tile"
+                            header="WT Query by Queue"
+                            press="OnPressWTQuerybyQueue"
+                             
+                        />
+                        <GenericTile
+                            id="_IDWTquerybyHU1"
+                            class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout tile"
+                            header="WT query by HU"
+                            press="OnPressWTquerybyHU"
+                             
+                        />
+                        <GenericTile
+                            id="_IDHUStockOverviewQuery1"
+                            class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout tile"
+                            header="HU Stock Overview Query"
+                            press="OnPressHUStockOverviewQuery"
+                             
+                        />
+                    </ScrollContainer> -->
+                    <!-- <ScrollContainer
+                        id="page151"
+                        horizontal="false"
+                        vertical="true"
+                        height="100%"
+                        class="sapUiContentPadding pages"
+                         
+                    >
+                        <GenericTile
+                            id="_IDProductInspectionByHU1"
+                            class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout tile"
+                            header="Product Inspection By HU"
+                            press="OnPressProductInspectionByHU"
+                             
+                        />
+ 
+                        <GenericTile
+                            id="_IDProductInspectionByStorageBin1"
+                            class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout tile"
+                            header="Product Inspection By Storage Bin"
+                            press="OnPressProductInspectionByStorageBin"
+                             
+                        />
+                    </ScrollContainer> -->
+                    <!-- <ScrollContainer
+                        id="page161"
+                        horizontal="false"
+                        vertical="true"
+                        height="100%"
+                        class="sapUiContentPadding pages"
+                    >
+                        <GenericTile
+                            id="_IDChangeQueue1"
+                            class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout tile"
+                            header="Change Queue"
+                            press="OnPressChange Queue"
+                             
+                        />
+ 
+                        <GenericTile
+                            id="_IDChangeResourceGroup1"
+                            class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout tile"
+                            header="Change Resource Group"
+                            press="OnPressChangeResourceGroup"
+                             
+                        />
+                    </ScrollContainer> -->
+                </pages>
+            </NavContainer>
+        </tnt:mainContents>
+    </tnt:ToolPage>
+        </Dialog>
+</core:FragmentDefinition>
+ 
