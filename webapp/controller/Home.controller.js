@@ -362,5 +362,14 @@ sap.ui.define([
                 oView.byId("idPasswordInput").setValue("");
             },
 
+            onForgotPassword: async function () {
+                this.oforgotDialog ??= await this.loadFragment({
+                    name: "com.app.rfscreens.fragments.Forgotpassword"
+                })
+                this.oforgotDialog.open();
+            },
+            onCloseFP: function () {
+                this.oforgotDialog.close();
+            },
         });
     });

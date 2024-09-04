@@ -5,19 +5,19 @@
 			"title": "Home",
 			"icon":"sap-icon://home",
             "tooltip":"Home",
-			"key": "page1"
+			"key": "pageSV1"
 		},
 		{
 			"title": "Requested Data",
 			"icon":"sap-icon://request",
             "tooltip":"Requested Data",
-			"key": "page2"
+			"key": "pageSV2"
 		},
         {
 			"title": "Users Data",
 			"icon":"sap-icon://employee",
             "tooltip":"Users Data",
-			"key": "page3"
+			"key": "pageSV3"
 		}
 
     ]

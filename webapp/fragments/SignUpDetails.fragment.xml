@@ -142,6 +142,7 @@
                     editable="true"
                     required="true"
                 />
+                <Button id="VerifyButton" text="Verify" press="onVerify" type="Emphasized"></Button>
             </form:SimpleForm>
         </content>
     </Dialog>

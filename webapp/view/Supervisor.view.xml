@@ -28,7 +28,7 @@
                 </Button>
                 <Label
                     class="Heading"
-                    text="Yard Management"
+                    text="RF SCREEN"
                 />
                 <ToolbarSpacer id="_IDGenToolbarSpacer1" />
                 <ToolbarSpacer id="spacer">
@@ -97,17 +97,17 @@
         <tnt:mainContents>
             <NavContainer
                 id="pageContainer"
-                initialPage="page1"
+                initialPage="pageSV1"
             >
                 <pages>
                     <ScrollContainer
-                        id="page1"
+                        id="pageSV1"
                         horizontal="true"
                         vertical="true"
                         height="100%"
                         class="sapUiContent"
                     >
-                    <!-- <ToolbarSpacer id="_IDGenToolbarSpacerArea" /> -->
+                        <!-- <ToolbarSpacer id="_IDGenToolbarSpacerArea" /> -->
 
                         <!-- <Button
                             id="idnewprocessArea"
@@ -152,6 +152,7 @@
                                     id="idEmppInput"
                                     placeholder="Enter Employee ID"
                                     class="Inputs"
+                                    liveChange="onEmployeeIdLiveChange"
                                 />
                             </FlexBox>
                             <FlexBox
@@ -165,8 +166,10 @@
                                     text="Name:"
                                     labelFor="idNameInput"
                                     required="true"
+                                    
                                 />
                                 <Input
+                                editable="true"
                                     id="idNameInput"
                                     placeholder="Enter Name"
                                     class="Inputs"
@@ -182,9 +185,10 @@
                                     id="idEmail"
                                     text="Email:"
                                     labelFor="idEmailInput"
-                                    required="true"
+                                    
                                 />
                                 <Input
+                                    editable="true"
                                     id="idEmailInput"
                                     placeholder="Enter Email"
                                     class="Inputs"
@@ -203,10 +207,38 @@
                                     required="true"
                                 />
                                 <Input
+                                   editable="true"
                                     id="idPhoneInput"
                                     placeholder="Enter Phone"
                                     class="Inputs"
                                 />
+                            </FlexBox>
+                            <FlexBox
+                                id="_IDField345"
+                                justifyContent="SpaceBetween"
+                                alignItems="Center"
+                                class="sapUiSmallMarginTop"
+                            >
+                                <Label
+                                    id="idLableRoesurcetype"
+                                    text="Resource Type"
+                                    required="true"
+                                />
+                                <ComboBox id="idRoesurcetypeInput" editable="true">
+                                    <core:Item
+                                        id="_IDGenItemPermanentEmployee"
+                                        key="PermanentEmployee"
+                                        text="Permanent Employee"
+                                    />
+
+                                    <core:Item
+                                        id="_IDGenItemtemporaryemployee"
+                                        key="temporaryemployee"
+                                        text="temporary Employee"
+                                    />
+                                </ComboBox>
+
+                                <!--  OUTBOUND  -->
                             </FlexBox>
                             <FlexBox
                                 id="_IDField2"
@@ -220,18 +252,18 @@
                                     labelFor="idAreaInput"
                                     required="true"
                                 />
-                                 <MultiComboBox
-                    id="AreaSelect"
-                    items="{path: '/ProcessAreaSet'}"
-                    selectionChange="onCheckBoxSelect"
-                >
-                    <core:Item
-                        class="dropdown"
-                        id="_IDGenItem5"
-                        key="{Processarea}"
-                        text="{Processarea}"
-                    />
-                </MultiComboBox>
+                                <MultiComboBox
+                                    id="AreaSelect"
+                                    items="{path: '/ProcessAreaSet'}"
+                                    selectionChange="onCheckBoxSelect"
+                                >
+                                    <core:Item
+                                        class="dropdown"
+                                        id="_IDGenItem5"
+                                        key="{Processarea}"
+                                        text="{Processarea}"
+                                    />
+                                </MultiComboBox>
                             </FlexBox>
                             <FlexBox
                                 id="_IDField33"
@@ -245,20 +277,19 @@
                                     labelFor="idGroupInput"
                                     required="true"
                                 />
-                                 <MultiComboBox
-                    id="GroupSelect"
-                    items="{path: '/ProcessAreaSet'}"
-                    visible="false"
-                    
-                >
-                    <core:Item
-                        class="dropdown"
-                        id="_IDGenItem4"
-                        key="{Processgroup}"
-                        text="{Processgroup}"
-                    />
-                </MultiComboBox>
-                           
+                                <MultiComboBox
+                                    id="GroupSelect"
+                                    items="{path: '/ProcessAreaSet'}"
+                                    visible="false"
+                                    selectionChange="onCheckBoxSelectGroup"
+                                >
+                                    <core:Item
+                                        class="dropdown"
+                                        id="_IDGenItem4"
+                                        key="{Processgroup}"
+                                        text="{Processgroup}"
+                                    />
+                                </MultiComboBox>
                             </FlexBox>
                             <FlexBox
                                 id="_IDField34"
@@ -272,32 +303,26 @@
                                     labelFor="idQueueSelect"
                                     required="true"
                                 />
-                                <ComboBox
+                                <MultiComboBox
                                     id="_IDGenComboBox10"
                                     placeholder="Select Queue from Dropdown.."
-                                    visible="true"
                                     class="Inputs"
-                                />
-                                <ComboBox
-                                    id="_IDGenComboBox11"
-                                    placeholder="Select Queue from Dropdown.."
+                                    items="{path: '/ProcessAreaSet'}"
                                     visible="false"
-                                    class="Inputs"
+                                    selectionChange="onCheckBoxSelectQueue"
                                 >
-                                 
-                                </ComboBox>
-                               
-                               
-                             
+                                    <core:Item
+                                        class="dropdown"
+                                        id="_IDGenItem22"
+                                        key="{Queue}"
+                                        text="{Queue}"
+                                    />
+                                </MultiComboBox>
+
                                 <!--  OUTBOUND  -->
-                               
-                               
-                               
-                               
-                               
-                               
-                               
                             </FlexBox>
+                            
+
                             <FlexBox
                                 id="_IDField6"
                                 justifyContent="Center"
@@ -329,7 +354,7 @@
                     </ScrollContainer>
 
                     <ScrollContainer
-                        id="page2"
+                        id="pageSV2"
                         horizontal="false"
                         vertical="true"
                         height="100%"
@@ -417,7 +442,7 @@
                         </Table>
                     </ScrollContainer>
                     <ScrollContainer
-                        id="page3"
+                        id="pageSV3"
                         horizontal="false"
                         vertical="true"
                         height="100%"
